@@ -6,7 +6,7 @@
 /*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 18:27:35 by jakim             #+#    #+#             */
-/*   Updated: 2024/04/01 21:02:35 by jakim            ###   ########.fr       */
+/*   Updated: 2024/04/01 21:57:56 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char *argv[], char *envp[])
 	}
 	else
 		waitpid(pid, &stat, WNOHANG);
-	check_err(WEXITSTATUS(stat), 0, ECHILD, 0);
+	//check_err(WEXITSTATUS(stat), 0, ECHILD, 2);
 	close(f1);
 	f1 = open(argv[4], O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	check_err(f1, -1, ENOENT, 1);
