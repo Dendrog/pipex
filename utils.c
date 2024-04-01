@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/01 18:27:56 by jakim             #+#    #+#             */
+/*   Updated: 2024/04/01 21:05:59 by jakim            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "pipex.h"
+
 char	*ft_strdup2(const char *s, int len)
 {
 	char	*mem;
@@ -22,7 +36,7 @@ char	*ft_strdup2(const char *s, int len)
 	return (mem);
 }
 
-void error_end(int er)
+void	error_end(int er)
 {
 	errno = er;
 	perror("Error");
@@ -31,8 +45,8 @@ void error_end(int er)
 
 char	**extract_path(char *envp[])
 {
-	char **tmp;
-	char **re;
+	char	**tmp;
+	char	**re;
 
 	tmp = NULL;
 	while (*envp)
@@ -47,19 +61,19 @@ char	**extract_path(char *envp[])
 		re = tmp;
 		while (*re)
 		{
-			ft_strlcat(*re,"/",999);
+			ft_strlcat(*re, "/", 999);
 			re++;
 		}
 	}
 	return (tmp);
 }
 
-char **make_arg(char *argv)
+char	**make_arg(char *argv)
 {
 	char	**re;
 	char	*tmp;
 
-	re = ft_split(argv,' ');
+	re = ft_split(argv, ' ');
 	if (!re)
 		return (NULL);
 	tmp = ft_strdup2(re[0], 100);
@@ -69,10 +83,10 @@ char **make_arg(char *argv)
 
 void	f_all(char **target)
 {
-	char **tmp;
+	char	**tmp;
 
 	tmp = target;
-	while(*target)
+	while (*target)
 	{
 		free(*target);
 		target++;
